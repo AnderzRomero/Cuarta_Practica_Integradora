@@ -1,0 +1,13 @@
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se pudo Actualizar el producto en el carrito"}
+{"level":"error","message":"No se pudo realizar el cierre de session"}
+{"code":"ERR_HTTP_HEADERS_SENT","level":"error"}
+{"level":"error","message":"No se pudo obtener el carrito"}
+{"level":"error","message":"No se pudo realizar el cierre de session"}
+{"code":"ERR_HTTP_HEADERS_SENT","level":"error"}
+{"level":"error","view":{"defaultEngine":"handlebars","ext":".handlebars","name":"/api/products","root":"D:\\Informacion\\Documents\\CoderHouse\\Programacion Backend\\Desafios y entregas\\Cuarta practica integradora\\src/views"}}

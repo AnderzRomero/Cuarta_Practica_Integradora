@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "herosystems",
+  "private_key_id": "66ae68dbf5defde221fc1b32d53de946c786c9a7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDKSpOgAuIekfQF\ndltjzxfSaCqrismFZPaU46GXMLUolByuZUKoGVkXc1gVDMxngIMLVd9Csjeibs+V\nv/I4p9M+l16n7Y3wixSEytJi89ffD6JmS/WYVS8c20hx3+3Crgms/BWCSrg1HtOa\n9J8X4YbzPMd2Y7X5Rg5vq9snGhy6xtWEaCWQAECX5/X2igNl32jiCSAaz6QHysmn\nxUhVmAHiYbB+FfQxkjAiAIuFTc2NaD3QC43RIhTEE0a00Qc4qoTX1MWA0zg9dZMg\nrD/b8JGNFpaRPz4MKO1nu4DXUNMPaT4Efz3DNEqYpxVxJVuA9zCOADYUvgOXuMr6\nVV6ZSEALAgMBAAECggEATuM9ZcGqF7zYWkb5RdeNlS6tMT+K7hvc81w/+Ht0slHs\nS3BOyco0zancGD1o+xYJRKLk0Zg5jP1Es8PqfICqJzcVoUxJNZyvUEfeOtuX/DOX\nI+iMaq8Rk+HKAyqOCIUhXdXit3BXHNQcNkoePsxi+blimb8xyHezCoaNDNcojAdr\nsAQnjCVIZY1zH/9FLNDaCC9Qwp8xXkkcCEYrk6dveaqGdxA2dpKECmn+1llUKW/w\nsRRBLQGPR32ZH3YUoaezyy405tO8a4pBvRWQaz8o4srA9AH67bZCEydvEMqFZh8x\nnsOQDqZzcq0ym1P9LtSIkj6mROP4Pp8r/UFfu5kzwQKBgQDuRxVCdk6GiRIN0cY9\nfiNetSRG+FVMK1Fp2Hg0rnfzlG5gKn4chAo/lwAOd9hZiufELgZmkPlw6VYlmUlQ\n1KgCe+4fec1D1PCzFFx/BGI29WRi6gseUHMuKTzm1Ibc+Bbev12Od8OYPc073It6\nwJaCN2J3sUSMZEHuCNENvtb/SwKBgQDZVkv8KfpcqNfAyzeVZ2GUwpQ3AZLhCL9y\niXpnTGeMW5VELjRMBe2P7FuxQDONvB0t0mQWoBsN/XpJh2/um0xaMYfXH6SLqBfC\n4ZpEV5udVC7AR2uWMB8QY8QuDzazLbfQKbL/bjufYxpsnovwjz0pvESKXJ7mw+zK\n8HOSulmKQQKBgQDHbBKs91stWhcUHdeuq51qrGxaQYkSIMcYsSWZ4dNet4HRVn8J\n2rDBG93ePguClbD4DhUpTniWOZPyD+K+ldyvh416JnTXKqbxGj93xvF0UdjcuEjp\n7CcaIUVpY8IjujdZ4gupKy82gbL9QM4zxG+zOCtfRau7XEWZtSNSP8CtFQKBgEur\nkjUv4G2Wk9gaaTXpkr4aqUQlliAnzZBxcV656WujD2t3stmtTrNHlf023zw//ODR\nWevOvty2HnevYjdvdrwIdsVdzQqa8fr2VaHp5tJ2Vvi3ZSwbgRVRxyJKRb9I8bDW\nc+4fUT8DYFXlNdAB70eytyJ9cQ3jtXRLF9JEc5yBAoGAWXdeAeAeImAGg4IAHCuF\nw3oOLBQcuop9m0CHfP5mIW0+/PYsUqKZUXa471flCIV2mba/tTpknc4JtBuXKw9f\nVDY+RwHajTpRFlL16B3ma/qjGsviXa691igUowQE4R0+8L3qzY36zD19/lq1Jec2\nPKHfjhWpy27/8WmrFg4ZdyE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "herosystems-main-account@herosystems.iam.gserviceaccount.com",
+  "client_id": "104053199533340168744",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/herosystems-main-account%40herosystems.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

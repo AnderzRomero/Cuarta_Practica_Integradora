@@ -1,0 +1,21 @@
+<div>
+  <h1 class="title">Compra finalizada</h1>
+  <br>
+  <h5 class="subtitle"><strong>Gracias por tu compra.</strong> Aquí está el detalle:</h5>
+  <br>
+  <br>
+  <div class="row" id="ticket"></div>
+
+  <div class="btnCart"><input class="btn btn-dark" type="submit" value="Finalizar compra"
+      id="finish" /></div>
+  <div class="footerTicket">
+    <p>Cordial saludo!!</p>
+    <p><strong>@ Hero Systems</strong></p>
+  </div>
+  <!-- Añade el valor de cart._id como un atributo de un elemento HTML -->
+  <div id="cartId" data-cartid="{{cart._id}}"></div>
+  <div id="userName" data-username="{{user.name}}"></div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+<script src="/js/purchase.js"></script>

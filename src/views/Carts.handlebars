@@ -1,0 +1,80 @@
+<div>
+    <h1 class="title">Carrito de Compras</h1>
+</div>
+
+<div>
+    {{#if cart}}
+    <div class="subtitle">
+        <h2>Productos en el carrito</h2>
+    </div>
+    <div>
+        <table class="table">
+            <thead class="tablehead">
+                <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio Unidad</th>
+                    <th scope="col">Subtotal</th>
+                </tr>
+            </thead>
+            {{#if cart.products.length}}
+            {{#each cart.products}}
+            <tbody class="carritoContainer">
+
+                <div class="card-body">
+                    <td><img class="card-img" src={{this._id.thumbnail}} alt={{this._id.title}}></td>
+                    <td>
+                        <h5 class="card-title">{{this._id.title}}</h5>
+                    </td>
+                    <div class="card-info">
+                        <td>
+                            <p class="card-text">{{this._id.description}}</p>
+                        </td>
+                        <td>
+                            <p class="card-text">{{this._id.category}}</p>
+                        </td>
+                        <td>
+                            <p class="card-text">{{this._id.code}}</p>
+                        </td>
+                        <td>
+                            <p class="card-text">{{this._id.stock}}</p>
+                        </td>
+                        <td>
+                            <p class="card-text">{{this.quantity}}</p>
+                        </td>
+                        <td>
+                            <p class="card-text"><strong>$ </strong>{{this._id.price}}</p>
+                        </td>
+                        <td>
+                            <p class="card-text"><strong>$ </strong>{{subtotal this._id.price this.quantity}}</p>
+                        </td>
+                    </div>
+                </div>
+            </tbody>
+            {{/each}}
+        </table>
+        <span class="amountProducts">
+            <h3>total: {{sumPrice cart.products}}</h3>
+        </span>
+    </div>
+    <br>
+    <hr>
+
+    {{else}}
+    <span>
+        <p>No hay productos en el carrito.</p>
+    </span>
+    {{/if}}
+    <div class="btnCart">
+        <a href="/api/products"><button type="button" class="btn btn-dark">Regresar a Tienda</button></a>
+        <a href="/api/carts/tickets"><button type="button" class="btn btn-dark">Realizar Compra</button></a>
+    </div>
+    {{else}}
+    <p>No se encontró ningún carrito.</p>
+    {{/if}}
+</div>
