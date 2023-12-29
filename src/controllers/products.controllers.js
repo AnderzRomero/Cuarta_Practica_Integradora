@@ -89,7 +89,7 @@ const createProduct = async (req, res, next) => {
             category,
             code,
             stock,
-            price
+            price            
         }
 
         const googleStorageService = new CloudStorageService();
@@ -101,12 +101,21 @@ const createProduct = async (req, res, next) => {
         }
 
         newProduct.thumbnail = thumbnail
+
+        if (req.user.role === "premium") {
+            const user = await usersService.getUserBy({ _id: req.user.id });
+            if (!user) {
+                return res.status(404).send({ status: "error", message: "User not found" });
+            }
+            newProduct.owner = user.email;
+        } else {
+            newProduct.owner = "admin";
+        }
         //Ya creé el objeto, ya mapeé las imágenes, ahora sí, inserto en la base
         const result = await productsService.createProduct(newProduct);
         res.send({ status: "success", payload: result._id });
-
     } catch (error) {
-        req.logger.error("No se logro crear el producto");
+        req.logger.error("No se pudo realizar la creacion del producto", error)
         const customError = new Error();
         const knownError = ErrorsDictionary[error.name];
 

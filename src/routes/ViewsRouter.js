@@ -15,9 +15,9 @@ class ViewsRouter extends BaseRouter {
     //Endpoint para el Mocking de productos
     this.get('/mockingproducts', ['PUBLIC'], productsControllers.mockProducts);
     // Endpoint para la validacion de la restauracion de contraseña
-    this.get('/password-restore',['PUBLIC'], usersControllers.passwordRestore);
-
-    this.get('/productCreator',["ADMIN", "PREMIUM"], usersControllers.productCreator);
+    this.get('/password-restore', ['PUBLIC'], usersControllers.passwordRestore);
+    // Vista para crear productos
+    this.get('/productCreator', ['ADMIN', 'PREMIUM'], usersControllers.productCreator);
   }
 }
 

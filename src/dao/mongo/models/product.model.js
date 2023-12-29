@@ -43,8 +43,8 @@ const schema = new mongoose.Schema(
             default: true,
             index: true
         },
-        owner: {
-            type: mongoose.SchemaTypes.ObjectId,
+        owner: {    
+            type: String,        
             ref: "users",
             default: "admin",
         },

@@ -19,9 +19,9 @@ class SessionsRouter extends BaseRouter {
         this.get('/google', ['NO_AUTH'], passportCall('google', { scope: ['profile', 'email'], strategyType: 'LOCALS' }), async (req, res) => { });   //Trigger de mi estartegia de passport
         this.get('/googlecallback', ['NO_AUTH'], passportCall('google', { strategyType: 'LOCALS' }), sessionsControllers.loginTercerosGoogle);
         // EndPoint para la redirigir a la vista para la restauracion de contraseña
-        this.post('/passwordRestoreRequest', ['PUBLIC'], sessionsControllers.passwordRestoreRequest);
+        this.post('/passwordRestoreRequest', ['NO_AUTH'], sessionsControllers.passwordRestoreRequest);
         // Endpoint para realizar la restauracion de contraseña
-        this.put('/password-restore', ['PUBLIC'], sessionsControllers.passwordRestore);
+        this.put('/password-restore', ['NO_AUTH'], sessionsControllers.passwordRestore);
         // EndPoint para Finalizar la session
         this.get('/logout', ['AUTH'], sessionsControllers.logout);
     }

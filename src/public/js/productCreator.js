@@ -5,10 +5,10 @@ const addBtn = document.getElementById("add-btn");
 fetch("/api/sessions/current")
   .then((response) => response.json())
   .then((userData) => {
-    if (userData.role === "admin") {
+    if (userData.payload.role === "admin") {
       deleteBtn.disabled = false;
       addBtn.disabled = false;
-    } else if (userData.role === "Premium") {
+    } else if (userData.payload.role === "premium") {
       deleteBtn.disabled = true;
       addBtn.disabled = false;
     }
@@ -17,39 +17,25 @@ fetch("/api/sessions/current")
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-
   const formData = new FormData(form);
-  const productData = {};
-  formData.forEach((value, key) => {
-    productData[key] = value;
-  });
+  const response = await fetch('/api/products', {
+    method: 'POST',
+    body: formData
+  })
+  const result = await response.json();
 
-  try {
-    const responseUser = await fetch("/api/sessions/current");
-    const userData = await responseUser.json();
-
-    if (userData.role === "PREMIUM") {
-      productData.owner = userData.email;
-    } else {
-      productData.owner = "admin";
-    }
-
-    const responseProduct = await fetch("/api/products", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(productData),
+  if (result.status === "success") {
+    // // Redirige a la ruta deseada    
+    Swal.fire({
+      title: "Se registro correctamente el producto!",
+      icon: "success",
+      position: "top-end",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = '/api/products';
+      }
     });
-
-    const result = await responseProduct.json();
-    if (responseProduct.ok) {
-      console.log(result.message);
-      form.reset();
-    } else {
-      console.error(result.message);
-    }
-  } catch (error) {
-    console.error(error);
+  } else {
+    console.log("Hubo un error al crear el producto");
   }
-});
+});  

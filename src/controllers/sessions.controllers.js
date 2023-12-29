@@ -70,10 +70,11 @@ const infoUser = async (req, res, next) => {
             req.logger.error("Usuario no autenticado");
             return res.status(403).sendError("Usuario no autenticado");
         } else {
-            res.render('profile', {
-                css: 'products',
-                user: req.user,
-            });
+            res.sendSuccessWithPayload(req.user);
+            // res.render('profile', {
+            //     css: 'products',
+            //     user: req.user,
+            // });
         }
     } catch (error) {
         req.logger.error("No se puedo obtener la informacion del usuario");

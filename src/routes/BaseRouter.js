@@ -44,7 +44,7 @@ export default class BaseRouter {
             try {
                 await callback.apply(this, params);
             } catch (error) {
-                req.logger.error("No se pudo aplicar el callbacks", error);
+                console.log(error);
                 params[1].sendInternalError(error);
             }
         })

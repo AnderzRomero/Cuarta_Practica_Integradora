@@ -3,33 +3,17 @@ import { productsService } from "../services/index.js";
 import { ticketsService } from "../services/index.js";
 import __dirname from "../utils.js";
 
-const getCart = async (req, res, next) => {
-    try {
-        const cid = req.user.cart;
-        const cart = await cartsService.getCartBy({ _id: cid });
-        if (!cart) return res.status(400).send({ status: "error", error: "Carrito no encontrado" });
-        res.render('Carts', {
-            css: 'carts',
-            cart: cart
-        })
-    } catch (error) {
-        req.logger.error("No se pudo obtener el carrito");
-        const customError = new Error();
-        const knownError = ErrorsDictionary[error.name];
-
-        if (knownError) {
-            customError.name = knownError,
-                customError.message = error.message,
-                customError.code = errorCodes[knownError];
-            next(customError);
-        } else {
-            next(error);
-        }
-    }
-
+const getCart = async (req, res) => {
+    const cid = req.user.cart;
+    const cart = await cartsService.getCartBy({ _id: cid });
+    if (!cart) return res.status(400).send({ status: "error", error: "Carrito no encontrado" });
+    return res.render('Carts', {
+        css: 'carts',
+        cart: cart
+    })
 }
 
-const getCartCompra = async (req, res, next) => {
+const getCartCompra = async (req, res) => {
     try {
         const user = req.user;
         const cid = req.user.cart;
@@ -43,43 +27,16 @@ const getCartCompra = async (req, res, next) => {
     } catch (error) {
         req.logger.error("No se logro encontrar el carrito");
         res.status(400).send({ status: "error", message: "Carrito no encontrado" });
-        const customError = new Error();
-        const knownError = ErrorsDictionary[error.name];
-
-        if (knownError) {
-            customError.name = knownError,
-                customError.message = error.message,
-                customError.code = errorCodes[knownError];
-            next(customError);
-        } else {
-            next(error);
-        }
     }
 }
 
-const createCart = async (req, res, next) => {
-    try {
-        const cart = await cartsService.createCart();
-        if (cart) return res.status(201).send({ status: "success", message: "Carrito creado", payload: cart._id });
-    } catch (error) {
-        req.logger.error("No se pudo crear el carrito", error);
-        res.status(400).send({ message: "Error al crear carrito" });
-        const customError = new Error();
-        const knownError = ErrorsDictionary[error.name];
-
-        if (knownError) {
-            customError.name = knownError,
-                customError.message = error.message,
-                customError.code = errorCodes[knownError];
-            next(customError);
-        } else {
-            next(error);
-        }
-    }
-
+const createCart = async (req, res) => {
+    const cart = await cartsService.createCart();
+    if (cart) return res.status(201).send({ status: "success", message: "Carrito creado", payload: cart._id });
+    res.status(400).send({ message: "Error al crear carrito" });
 }
 
-const purchaseCart = async (req, res, next) => {
+const purchaseCart = async (req, res) => {
     try {
         const user = req.user;
         const cartId = req.user.cart;
@@ -100,7 +57,7 @@ const purchaseCart = async (req, res, next) => {
                 const product = await productsService.getProductBy(productId);
 
                 if (!product) {
-                    req.loger.info("No se ha podido obtener el producto con id ", productId);
+                    console.log("No se ha podido obtener el producto con id ", productId);
                     continue;
                 }
                 if (productInCart.quantity > product.stock) {
@@ -141,116 +98,75 @@ const purchaseCart = async (req, res, next) => {
         }
         return res.status(200).send({ status: "success", message: "Compra exitosa", payload: newTicket });
     } catch (error) {
-        const customError = new Error();
-        const knownError = ErrorsDictionary[error.name];
-
-        if (knownError) {
-            customError.name = knownError,
-                customError.message = error.message,
-                customError.code = errorCodes[knownError];
-            next(customError);
-        } else {
-            next(error);
-        }
         return res.status(500).send("Error en el servidor: " + error.message);
     }
 }
 
-const updateProductInCartNO_AUTH = async (req, res, next) => {
-    try {
-        const { cid, pid } = req.params;
-        // Vamos a ver si existen y traer sus entidades
-        const cart = await cartsService.getCartBy({ _id: cid });
-        if (!cart) return res.status(400).send({ status: "error", error: "Carrito no existe" });
-        const product = await productsService.getProductBy({ _id: pid });
-        if (!product) return res.status(400).send({ status: "error", error: "Producto no existe" });
+const updateProductInCartNO_AUTH = async (req, res) => {
+    const { cid, pid } = req.params;
+    // Vamos a ver si existen y traer sus entidades
+    const cart = await cartsService.getCartBy({ _id: cid });
+    if (!cart) return res.status(400).send({ status: "error", error: "Carrito no existe" });
+    const product = await productsService.getProductBy({ _id: pid });
+    if (!product) return res.status(400).send({ status: "error", error: "Producto no existe" });
 
-        const productExisteInCarrito = cart.products.find(product => {
-            return product._id._id.toString() === pid
+    const productExisteInCarrito = cart.products.find(product => {
+        return product._id._id.toString() === pid
+    })
+    if (productExisteInCarrito) {
+        // Incrementar la cantidad del producto en el carrito
+        productExisteInCarrito.quantity += 1;
+
+        // Guardar los cambios en el carrito
+        await cartsService.updateProductQuantity({ _id: cid }, cart.products);
+
+        // Retornar una respuesta exitosa
+        req.logger.info("Se incrementa la cantidad de producto");
+        return res.status(200).send({ status: 'success', message: 'Cantidad del producto incrementada en el carrito' });
+    } else {
+        cart.products.push({
+            _id: pid
         })
-        if (productExisteInCarrito) {
-            // Incrementar la cantidad del producto en el carrito
-            productExisteInCarrito.quantity += 1;
-
-            // Guardar los cambios en el carrito
-            await cartsService.updateProductQuantity({ _id: cid }, cart.products);
-
-            // Retornar una respuesta exitosa
-            req.logger.info("Se incrementa la cantidad de producto");
-            return res.status(200).send({ status: 'success', message: 'Cantidad del producto incrementada en el carrito' });
-        } else {
-            cart.products.push({
-                _id: pid
-            })
-            const newproduct = { products: cart.products };
-            await cartsService.updateCart({ _id: cid }, newproduct);
-            req.logger.info("Se agrego el producto al carro");
-            res.send({ status: "success", message: "Producto agregado al carro" });
-        }
-    } catch (error) {
-        req.logger.error("No se pudo Actualizar el producto en el carrito");
-        const customError = new Error();
-        const knownError = ErrorsDictionary[error.name];
-
-        if (knownError) {
-            customError.name = knownError,
-                customError.message = error.message,
-                customError.code = errorCodes[knownError];
-            next(customError);
-        } else {
-            next(error);
-        }
+        const newproduct = { products: cart.products };
+        await cartsService.updateCart({ _id: cid }, newproduct);
+        req.logger.info("Se agrego el producto al carro");
+        res.send({ status: "success", message: "Producto agregado al carro" });
     }
 }
 
-const updateProductInCart = async (req, res, next) => {
-    try {
-        const { pid } = req.params;
-        const cartId = req.user.cart;
-        const cart = await cartsService.getCartBy({ _id: cartId });
-        if (!cart) return res.status(400).send({ status: "error", error: "Carrito no existe" });
-        const product = await productsService.getProductBy({ _id: pid });
-        if (!product) return res.status(400).send({ status: "error", error: "Producto no existe" })
+const updateProductInCart = async (req, res) => {
+    const { pid } = req.params;
+    const cartId = req.user.cart;
+    const cart = await cartsService.getCartBy({ _id: cartId });
+    if (!cart) return res.status(400).send({ status: "error", error: "Carrito no existe" });
+    const product = await productsService.getProductBy({ _id: pid });
+    if (!product) return res.status(400).send({ status: "error", error: "Producto no existe" })
 
-        const productExisteInCarrito = cart.products.find(product => {
-            return product._id._id.toString() === pid
+    const productExisteInCarrito = cart.products.find(product => {
+        return product._id._id.toString() === pid
+    })
+    if (productExisteInCarrito) {
+        // Incrementar la cantidad del producto en el carrito
+        productExisteInCarrito.quantity += 1;
+
+        // Guardar los cambios en el carrito
+        await cartsService.updateProductQuantity({ _id: cartId }, cart.products);
+
+        // Retornar una respuesta exitosa
+        req.logger.info("Se incrementa la cantidad de producto");
+        return res.status(200).send({ status: 'success', message: 'Cantidad del producto incrementada en el carrito' });
+    } else {
+        cart.products.push({
+            _id: pid
         })
-        if (productExisteInCarrito) {
-            // Incrementar la cantidad del producto en el carrito
-            productExisteInCarrito.quantity += 1;
-
-            // Guardar los cambios en el carrito
-            await cartsService.updateProductQuantity({ _id: cartId }, cart.products);
-
-            // Retornar una respuesta exitosa
-            req.logger.info("Se incrementa la cantidad de producto");
-            return res.status(200).send({ status: 'success', message: 'Cantidad del producto incrementada en el carrito' });
-        } else {
-            cart.products.push({
-                _id: pid
-            })
-            const newproduct = { products: cart.products };
-            await cartsService.updateCart({ _id: cartId }, newproduct);
-            req.logger.info("Se agrego el producto al carro");
-            res.send({ status: "success", message: "Producto agregado al carro" });
-        }
-    } catch (error) {
-        req.logger.error("No se pudo Actualizar el producto en el carrito");
-        const customError = new Error();
-        const knownError = ErrorsDictionary[error.name];
-
-        if (knownError) {
-            customError.name = knownError,
-                customError.message = error.message,
-                customError.code = errorCodes[knownError];
-            next(customError);
-        } else {
-            next(error);
-        }
+        const newproduct = { products: cart.products };
+        await cartsService.updateCart({ _id: cartId }, newproduct);
+        req.logger.info("Se agrego el producto al carro");
+        res.send({ status: "success", message: "Producto agregado al carro" });
     }
 }
 
-const deleteProductInCart = async (req, res, next) => {
+const deleteProductInCart = async (req, res) => {
     const { pid } = req.params;
     const cartId = req.user.cart;
     try {
@@ -260,21 +176,10 @@ const deleteProductInCart = async (req, res, next) => {
     } catch (error) {
         req.logger.error("No se pudo eliminar el producto");
         res.status(500).send({ error: error.message });
-        const customError = new Error();
-        const knownError = ErrorsDictionary[error.name];
-
-        if (knownError) {
-            customError.name = knownError,
-                customError.message = error.message,
-                customError.code = errorCodes[knownError];
-            next(customError);
-        } else {
-            next(error);
-        }
     }
 }
 
-const deleteAllProductsInCart = async (req, res, next) => {
+const deleteAllProductsInCart = async (req, res) => {
     const cartId = req.user.cart;
     try {
         // Traigo el carrito al que eliminare los productos
@@ -292,17 +197,6 @@ const deleteAllProductsInCart = async (req, res, next) => {
     } catch (error) {
         req.logger.error("No se logra Borrar los productos del carro");
         res.status(500).send({ error: error.message });
-        const customError = new Error();
-        const knownError = ErrorsDictionary[error.name];
-
-        if (knownError) {
-            customError.name = knownError,
-                customError.message = error.message,
-                customError.code = errorCodes[knownError];
-            next(customError);
-        } else {
-            next(error);
-        }
     }
 }
 export default {

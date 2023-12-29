@@ -9,7 +9,7 @@ class ProductsRouter extends BaseRouter {
     // EndPoint para traer producto por ID
     this.get("/:pid", ['PUBLIC'], productsControllers.getProductBy);
     // EndPoint para crear producto 
-    this.post("/", ['ADMIN'], uploader.array('thumbnail'), productsControllers.createProduct);
+    this.post("/", ['ADMIN', 'PREMIUM'], uploader.array('thumbnail'), productsControllers.createProduct);
     // EndPoint para Actualizar producto por ID
     this.put("/:pid", ['ADMIN'], productsControllers.updateProductBy);
     // EndPoint para eliminar producto por ID

@@ -6,6 +6,7 @@ import "./dao/mongo/dbConfig.js";
 import viewsRouter from "./routes/ViewsRouter.js";
 import SessionsRouter from "./routes/SessionsRouter.js";
 import productsRouter from "./routes/ProductsRouter.js";
+import UsersRouter from "./routes/UsersRouter.js";
 import cartsRouter from "./routes/CartsRouter.js";
 import attachLogger from "./middlewares/attachLogger.js";
 
@@ -57,6 +58,7 @@ app.use("/", viewsRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 app.use('/api/sessions', SessionsRouter);
+app.use("/api/users", UsersRouter);
 
 app.use("/loggerTest", async (req, res) => {
     req.logger.fatal("fatal", "Logger test fatal");
