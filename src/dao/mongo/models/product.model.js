@@ -38,7 +38,7 @@ const schema = new mongoose.Schema(
             type: Array,
             default: []
         },
-        status: {
+        available: {
             type: Boolean,
             default: true,
             index: true

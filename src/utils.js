@@ -26,12 +26,12 @@ export const getValidFilters = (filters, documentType) => {
             if (filters.price) {
                 cleanFilter['price'] = filters.price
             }
-            if (filters.status) {
-                if (typeof status === true) {
-                    cleanFilter['status'] = { $eq: filters.status }
+            if (filters.available) {
+                if (typeof available === true) {
+                    cleanFilter['available'] = { $eq: filters.available }
                 }
                 else {
-                    cleanFilter['status'] = { $eq: filters.status }
+                    cleanFilter['available'] = { $eq: filters.available }
                 }
             }
 

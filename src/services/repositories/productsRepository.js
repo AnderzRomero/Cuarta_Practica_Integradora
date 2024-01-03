@@ -1,29 +1,37 @@
 export default class ProductsRepository {
-    constructor(dao){
+    constructor(dao) {
         this.dao = dao;
     }
 
-    getProducts = (params) =>{
+    getProducts = (params) => {
         return this.dao.get(params);
     }
 
-    paginateProducts = (params, paginateOptions) =>{
+    paginateProducts = (params, paginateOptions) => {
         return this.dao.paginateProducts(params, paginateOptions);
     }
 
-    getProductBy = (params) =>{
+    getProductBy = (params) => {
         return this.dao.getBy(params);
     }
 
-    createProduct = (product) =>{
+    createProduct = (product) => {
         return this.dao.create(product);
     }
 
-    updateProduct = (id, product) =>{
+    updateProduct = (id, product) => {
         return this.dao.update(id, product);
     }
 
-    deleteProduct = (id) =>{
+    updateProductStatusInactive = (id) => {
+        return this.dao.updateStatusInactive(id);
+    }
+
+    updateProductStatusActive = (id) => {
+        return this.dao.updateStatusActive(id);
+    }
+
+    deleteProduct = (id) => {
         return this.dao.delete(id);
     }
 }

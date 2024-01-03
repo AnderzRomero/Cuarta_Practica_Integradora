@@ -89,7 +89,7 @@ const createProduct = async (req, res, next) => {
             category,
             code,
             stock,
-            price            
+            price
         }
 
         const googleStorageService = new CloudStorageService();
@@ -140,7 +140,7 @@ const updateProductBy = async (req, res, next) => {
             category,
             stock,
             price,
-            status
+            available
         } = req.body;
 
         const updateProduct = {
@@ -149,7 +149,7 @@ const updateProductBy = async (req, res, next) => {
             category,
             stock,
             price,
-            status
+            available
         }
 
         const product = await productsService.getProductBy({ _id: pid });
@@ -158,6 +158,33 @@ const updateProductBy = async (req, res, next) => {
         res.send({ status: "success", message: "Producto Actualizado" });
     } catch (error) {
         req.logger.error("No se pudo realizar la actualizacion del producto");
+        const customError = new Error();
+        const knownError = ErrorsDictionary[error.name];
+
+        if (knownError) {
+            customError.name = knownError,
+                customError.message = error.message,
+                customError.code = errorCodes[knownError];
+            next(customError);
+        } else {
+            next(error);
+        }
+    }
+}
+
+const updatedProductStatus = async (req, res, next) => {
+    try {
+        const { pid } = req.params;
+        const product = await productsService.getProductBy({ _id: pid });
+        if (!product) return res.status(400).send({ status: "error", error: "Producto no encontrado" });
+        if (product.available === true) {
+            await productsService.updateProductStatusInactive(pid)
+        } else {
+            await productsService.updateProductStatusActive(pid)
+        }
+        res.send({ status: "success", message: "Producto actualizado estado" });
+    } catch (error) {
+        req.logger.error("No se pudo Actualizar el estado del producto");
         const customError = new Error();
         const knownError = ErrorsDictionary[error.name];
 
@@ -225,6 +252,7 @@ export default {
     getProductBy,
     createProduct,
     updateProductBy,
+    updatedProductStatus,
     deleteProductBy,
     mockProducts
 }

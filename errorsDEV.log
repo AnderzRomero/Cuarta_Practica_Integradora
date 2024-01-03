@@ -54,3 +54,38 @@
 {"level":"error","message":"No se pudo autentinticar"}
 {"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
 {"level":"error"}
+{"_message":"products validation failed","errors":{"category":{"kind":"enum","message":"`prueba` is not a valid enum value for path `category`.","name":"ValidatorError","path":"category","properties":{"enumValues":["Accesorios Externos","Cajas","Combos Cajas con Fuentes","Combos Perifericos","Diademas","Mouse","Micro SD","Memorias RAM","Fuentes","Monitores","Pad Mouse","Portatiles Gamer","Parlantes","Placas Madre","Redes","Refigeraciones","Reguladores y Ups","Teclados","Tarjetas Graficas","Streaming","Sillas","Unidades Disco Mecanico","Unidades SSD"],"message":"`prueba` is not a valid enum value for path `category`.","path":"category","type":"enum","value":"prueba"},"value":"prueba"}},"level":"error","message":"No se pudo realizar la creacion del producto products validation failed: category: `prueba` is not a valid enum value for path `category`.","stack":"ValidationError: products validation failed: category: `prueba` is not a valid enum value for path `category`.\n    at Document.invalidate (D:\\Informacion\\Documents\\CoderHouse\\Programacion Backend\\Desafios y entregas\\Cuarta practica integradora\\node_modules\\mongoose\\lib\\document.js:3187:32)\n    at D:\\Informacion\\Documents\\CoderHouse\\Programacion Backend\\Desafios y entregas\\Cuarta practica integradora\\node_modules\\mongoose\\lib\\document.js:2980:17\n    at D:\\Informacion\\Documents\\CoderHouse\\Programacion Backend\\Desafios y entregas\\Cuarta practica integradora\\node_modules\\mongoose\\lib\\schemaType.js:1368:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)"}
+{"level":"error","message":"No se pudo autentinticar"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se pudo autentinticar"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se pudo autentinticar"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se pudo autentinticar"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se pudo autentinticar"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se pudo autentinticar"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se pudo autentinticar"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se pudo autentinticar"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se pudo autentinticar"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se logro Obtener la vista de productos filters is not defined","stack":"ReferenceError: filters is not defined\n    at ViewsRouter.getproducts (file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/controllers/users.controllers.js:264:46)\n    at file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/routes/BaseRouter.js:45:32\n    at Layer.handle [as handle_request] (D:\\Informacion\\Documents\\CoderHouse\\Programacion Backend\\Desafios y entregas\\Cuarta practica integradora\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\Informacion\\Documents\\CoderHouse\\Programacion Backend\\Desafios y entregas\\Cuarta practica integradora\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/middlewares/executePolicies.js:4:46\n    at Layer.handle [as handle_request] (D:\\Informacion\\Documents\\CoderHouse\\Programacion Backend\\Desafios y entregas\\Cuarta practica integradora\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\Informacion\\Documents\\CoderHouse\\Programacion Backend\\Desafios y entregas\\Cuarta practica integradora\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at cartSetter (file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/middlewares/cartSetter.js:8:5)\n    at Layer.handle [as handle_request] (D:\\Informacion\\Documents\\CoderHouse\\Programacion Backend\\Desafios y entregas\\Cuarta practica integradora\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (D:\\Informacion\\Documents\\CoderHouse\\Programacion Backend\\Desafios y entregas\\Cuarta practica integradora\\node_modules\\express\\lib\\router\\route.js:144:13)"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"No se pudo autentinticar"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
