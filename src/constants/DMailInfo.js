@@ -12,7 +12,7 @@ export default {
         ]
     },
     passwordrestore: {
-        subjet: 'Restablecimiento de contraseña',
+        subject: 'Restablecimiento de contraseña',
         attachments: [
             {
                 filename: 'banner.png',

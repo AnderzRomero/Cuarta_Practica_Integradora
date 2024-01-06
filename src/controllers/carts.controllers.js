@@ -1,6 +1,8 @@
 import { cartsService } from "../services/index.js";
 import { productsService } from "../services/index.js";
 import { ticketsService } from "../services/index.js";
+import MailerService from "../services/MailerService.js";
+import DMailTemplates from "../constants/DMailTemplates.js";
 import __dirname from "../utils.js";
 
 const getCart = async (req, res) => {
@@ -96,8 +98,31 @@ const purchaseCart = async (req, res) => {
             req.logger.error("No se logro procesar la compra");
             return res.status(500).send({ status: "error", message: " A ocurrido un error, mientras procesamos la compra" });
         }
+
+        try {
+            const mailerService = new MailerService();
+            const payload = {
+                nombreUsuario: req.user.name,
+                productos: productPurchase,
+            };
+            const result = await mailerService.sendMail(
+                [req.user.email],
+                DMailTemplates.PURCHASE,
+                {
+                    name: req.user.name,
+                    ticket: newTicket.code,
+                    products: newTicket.products,
+                    total: newTicket.amount,
+                    date: newTicket.purchase_datetime,
+                }
+            );
+        } catch (error) {
+            req.logger.error(`Falló el envío de correo para ${req.user.email}`, error);
+        }
+        req.logger.info('Compra Exitosa');
         return res.status(200).send({ status: "success", message: "Compra exitosa", payload: newTicket });
     } catch (error) {
+        req.logger.error(error);
         return res.status(500).send("Error en el servidor: " + error.message);
     }
 }

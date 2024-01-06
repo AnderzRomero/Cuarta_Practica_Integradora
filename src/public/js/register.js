@@ -17,6 +17,14 @@ form.addEventListener('submit', async e => {
 
     const result = await response.json();
     if (result.status === "success") {
-        window.location.replace('/login');
+        Swal.fire({
+            title: "Se realizo el registro correctamente!",
+            icon: "success",
+            position: "top-end",
+        }).then((res) => {
+            if (res.isConfirmed) {
+                window.location.replace('/login');
+            }
+        });
     }
 })

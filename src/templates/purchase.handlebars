@@ -1,33 +1,36 @@
-<div>
+<div
+    style="text-align: center;">
     <h1>Compra finalizada</h1>
     <div style='text-align:center;'>
         <img src='cid:banner' />
     </div>
-    <h1>Detalles de la Compra</h1>
+    <h1 style="text-align:center;">Detalles de la Compra</h1>
     <p>Hola {{name}}!</p>
     <p>Gracias por tu compra. Aquí está el detalle:</p>
     <br />
-    <p> El numero de ticket es: {{ticket}}</p>
+    <p> El numero de ticket es: # {{ticket}}</p>
     <p> La fecha de compra: {{date}}</p>
-    <table>
-        <thead>
+    <table
+        style="max-width: 95%;margin: 0 auto;text-align: center;padding: 0.5rem;border-radius: 10px;vertical-align: middle;">
+        <thead style="background-color: rgba(0, 0, 0, 0.849);
+    color: #ffffff;">
             <tr>
                 <th scope="col">Productos</th>
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="color: #000;">
             {{#each products}}
             <tr>
-                <td>{{product.title}}</td>
+                <td>{{_id.title}}</td>
                 <td>{{quantity}}</td>
-                <td>{{product.price}}</td>
+                <td>$ {{_id.price}}</td>
             </tr>
             {{/each}}
         </tbody>
     </table>
-    <p>Total: {{total}}</p>
+    <p>Total: $ {{total}}</p>
 
     <p>Cordial saludo</p>
     <p>@HeroSystems</p>
