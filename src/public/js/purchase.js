@@ -24,7 +24,7 @@ const ticketResponse = async () => {
                         <p>Vendido y entregado por <strong>Hero Systems</strong></p>
                         <p>${userName}</p>
                         <p>${data.purchaser}</p>
-                        <p>Productos:</p>
+                        <h2 class="subtitle">Productos:</h2>
                         <table class="table">
                         <thead class="tablehead">
                             <tr>
@@ -35,7 +35,7 @@ const ticketResponse = async () => {
                                 <th scope="col">Subtotal</th>
                             </tr>
                         </thead>
-                    <tbody>
+                    <tbody class="tbody">
                       ${data.products.map((product) => {
                             return `<tr>
                                         <td><img class="img-ticket" src=${product._id.thumbnail} alt=${product._id.title}></td>

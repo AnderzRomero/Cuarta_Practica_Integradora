@@ -5,8 +5,8 @@ export default {
         subject: '¡Bienvenido!',
         attachments: [
             {
-                filename: 'banner.jpg',
-                path: `${__dirname}/public/img/HeroSystems.jpg`,
+                filename: 'banner.png',
+                path: `${__dirname}/public/img/HeroSystems.png`,
                 cid: 'banner'
             }
         ]
@@ -15,9 +15,19 @@ export default {
         subjet: 'Restablecimiento de contraseña',
         attachments: [
             {
-                filename: 'banner.jpg',
-                path: `${__dirname}/public/img/HeroSystems.jpg`,
+                filename: 'banner.png',
+                path: `${__dirname}/public/img/HeroSystems.png`,
                 cid: 'banner'
+            }
+        ]
+    },
+    purchase: {
+        subject: "Gracias por tu compra",
+        attachments: [
+            {
+                filename: "banner.png",
+                path: `${__dirname}/public/img/HeroSystems.png`,
+                cid: "banner"
             }
         ]
     }

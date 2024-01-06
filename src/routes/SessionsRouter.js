@@ -9,7 +9,7 @@ class SessionsRouter extends BaseRouter {
         // EndPoint para crear un usuario y almacenarlo en la Base de Datos
         this.post('/register', ['NO_AUTH'], passportCall('register', { strategyType: 'LOCALS' }), sessionsControllers.createUser);
         // EndPoint para logearse con el usuario
-        this.post('/login', ['NO_AUTH'], passportCall('login', { strategyType: 'JWT' }), sessionsControllers.Login);
+        this.post('/login', ['NO_AUTH'], passportCall('login', { strategyType: 'LOCALS' }), sessionsControllers.Login);
         // EndPoint para obtener la informacion del usuario
         this.get('/current', ['AUTH'], sessionsControllers.infoUser);
         // EndPoint para autenticacion de terceros con GitHub

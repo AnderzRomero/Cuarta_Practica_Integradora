@@ -40,13 +40,20 @@ const Login = async (req, res, next) => {
         if (!req.user) {
             req.logger.error("No se pudo autentinticar");
             return res.status(403).sendError("No se pudo autenticar");
+        } else if (req.user.role === "admin") {
+            const tokenizedUser = UserDTO.getTokenDTOadmin(req.user);
+            const token = jwt.sign(tokenizedUser, config.jwt.SECRET, { expiresIn: '1h' });
+            res.cookie(config.jwt.COOKIE, token);
+            res.clearCookie('cart');
+            req.logger.info("Se realiza la autenticacion correctamente y se redirecciona a productos");
+            return res.status(200).send({ status: "success", message: 'logeado correctamente', payload: req.user });
         } else {
             const tokenizedUser = UserDTO.getTokenDTOFrom(req.user);
             const token = jwt.sign(tokenizedUser, config.jwt.SECRET, { expiresIn: '1h' });
             res.cookie(config.jwt.COOKIE, token);
             res.clearCookie('cart');
             req.logger.info("Se realiza la autenticacion correctamente y se redirecciona a productos");
-            return res.status(200).send({ status: "success", message: 'logeado correctamente', payload: req.user});
+            return res.status(200).send({ status: "success", message: 'logeado correctamente', payload: req.user });
         }
     } catch (error) {
         req.logger.error("No se encuentra registrado, porfavor realizar el registro!!");
@@ -71,10 +78,6 @@ const infoUser = async (req, res, next) => {
             return res.status(403).sendError("Usuario no autenticado");
         } else {
             res.sendSuccessWithPayload(req.user);
-            // res.render('profile', {
-            //     css: 'products',
-            //     user: req.user,
-            // });
         }
     } catch (error) {
         req.logger.error("No se puedo obtener la informacion del usuario");

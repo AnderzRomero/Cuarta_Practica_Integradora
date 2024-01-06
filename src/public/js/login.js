@@ -16,7 +16,7 @@ form.addEventListener('submit', async e => {
 
     if (result.status === "success" && result.payload.role === "admin") {
         // // Redirige a la ruta deseada
-        window.location.href = '/productCreator';
+        window.location.href = '/profile';
     } else {
         window.location.href = '/api/products';
     }

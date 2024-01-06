@@ -1,9 +1,10 @@
-<h1>Perfil</h1>
+<h1 class="title">Bienvenidos a tu Perfil</h1>
 
-<p>nombre: {{user.nombres}}</p>
-<p>apellido: {{user.apellidos}}</p>
-<p>Rol: {{user.role}}</p>
+<a href="/api/sessions/logout"><button class="btn btn-logon">Cerrar Session</button></a>
 
-<a href="/api/sessions/logout">
-    <button>Cerrar Session</button>
-</a>
+<div class="container">
+    <h5 class="subtitle">Datos de usuario:</h5>
+
+    <div class="profile" id="profile"></div>
+</div>
+<script src="/js/profiles.js"></script>

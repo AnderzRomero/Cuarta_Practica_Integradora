@@ -4,13 +4,13 @@ import cartsControllers from "../controllers/carts.controllers.js";
 class CartsRouter extends BaseRouter {
   init() {
     // Endpoint para obtener carrito
-    this.get("/", ['USER', 'ADMIN'], cartsControllers.getCart);
+    this.get("/", ['USER', 'PREMIUM'], cartsControllers.getCart);
     // Endpoint para obtener carrito para compra
     this.get("/:cid", ['USER'], cartsControllers.getCartCompra);
     // Endpoint para crear carrito
     this.post("/", ['ADMIN'], cartsControllers.createCart);
     // Endpoint para crear tickets
-    this.post("/:cid/purchase", ['USER'], cartsControllers.purchaseCart);
+    this.post("/:cid/purchase", ['USER', 'PREMIUM'], cartsControllers.purchaseCart);
     // Endpoint para actualizar o agregar producto al carrito sin iniciar session
     this.put('/:cid/products/:pid', ['NO_AUTH'], cartsControllers.updateProductInCartNO_AUTH);
     // Endpoint para actualizar o agregar producto al carrito Autenticado

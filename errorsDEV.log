@@ -89,3 +89,52 @@
 {"level":"error","message":"No se pudo autentinticar"}
 {"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
 {"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","view":{"defaultEngine":"handlebars","ext":".handlebars","name":"contact","root":"D:\\Informacion\\Documents\\CoderHouse\\Programacion Backend\\Desafios y entregas\\Cuarta practica integradora\\src/views"}}
+{"level":"error","message":"No se pudo autentinticar"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"No se encuentra registrado, porfavor realizar el registro!!"}
+{"level":"error"}
+{"level":"error","message":"Error al actualizar usuario Cannot access 'user' before initialization","stack":"ReferenceError: Cannot access 'user' before initialization\n    at UsersRouter.upgradeUser (file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/controllers/users.controllers.js:127:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/routes/BaseRouter.js:45:17"}
+{"level":"error","message":"Error al actualizar usuario Cannot read properties of undefined (reading 'length')","stack":"TypeError: Cannot read properties of undefined (reading 'length')\n    at UserDTO.getTokenDTOFrom (file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/dto/User.js:3:28)\n    at UsersRouter.upgradeUser (file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/controllers/users.controllers.js:138:43)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/routes/BaseRouter.js:45:17"}
+{"level":"error","message":"Error al actualizar usuario Cannot read properties of undefined (reading 'length')","stack":"TypeError: Cannot read properties of undefined (reading 'length')\n    at UserDTO.getTokenDTOFrom (file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/dto/User.js:3:28)\n    at UsersRouter.upgradeUser (file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/controllers/users.controllers.js:138:43)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/routes/BaseRouter.js:45:17"}
+{"level":"error","message":"Error al actualizar usuario Cannot read properties of undefined (reading 'length')","stack":"TypeError: Cannot read properties of undefined (reading 'length')\n    at UserDTO.getTokenDTOFrom (file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/dto/User.js:3:28)\n    at UsersRouter.upgradeUser (file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/controllers/users.controllers.js:138:43)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/routes/BaseRouter.js:45:17"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"No se pudo realizar la creacion del producto usersService is not defined","stack":"ReferenceError: usersService is not defined\n    at ProductsRouter.createProduct (file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/controllers/products.controllers.js:106:26)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/routes/BaseRouter.js:45:17"}
+{"level":"error"}
+{"level":"error","message":"No se pudo realizar la creacion del producto usersService is not defined","stack":"ReferenceError: usersService is not defined\n    at ProductsRouter.createProduct (file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/controllers/products.controllers.js:106:26)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///D:/Informacion/Documents/CoderHouse/Programacion%20Backend/Desafios%20y%20entregas/Cuarta%20practica%20integradora/src/routes/BaseRouter.js:45:17"}
+{"level":"error"}

@@ -23,6 +23,7 @@ fetch("/api/sessions/current")
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const formData = new FormData(form);
+
   const response = await fetch('/api/products', {
     method: 'POST',
     body: formData
@@ -91,10 +92,4 @@ function DeleteProduct(productId) {
         });
     }
   });
-
-
-
-
-
-
 }

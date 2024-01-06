@@ -65,7 +65,7 @@ const initializeStrategies = () => {
             if (!isValidPassword) return done(null, false, { message: "Credenciales Incorrectas" });
             return done(null, user);
         } catch (error) {
-            req.logger.error("Ocurrio algun error al logearse",error);
+            req.logger.error("Ocurrio algun error al logearse", error);
             return done(error);
         }
     }));

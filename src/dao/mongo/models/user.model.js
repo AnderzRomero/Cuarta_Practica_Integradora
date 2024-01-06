@@ -4,11 +4,24 @@ const collection = "Users";
 
 const schema = new mongoose.Schema(
     {
-        firstName: String,
-        lastName: String,
-        email: String,
+        firstName: {
+            type: String,
+            required: true
+        },
+        lastName: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String,
+            required: true,
+            uniqued: true
+        },
         age: Number,
-        password: String,
+        password: {
+            type: String,
+            required: true
+        },
         role:
         {
             type: String,

@@ -3,35 +3,34 @@
   <p class="subtitle">Ingresa los documentos requeridos para la suscripción</p>
 
   <div class="container">
-    <form class="w-50" id="premiumForm" enctype="multipart/form-data">
+    <form class="w-50 form" id="premiumForm" enctype="multipart/form-data">
       <div class="mb-3">
-        <label for="profilePhoto" class="form-label">Foto de perfil *</label>
+        <label for="profilePhoto" class="form-label">Foto de perfil</label>
         <input class="form-control" type="file" name="profile" id="profilePhoto" />
       </div>
 
       <div class="mb-3">
-        <label for="frontDni" class="form-label">DNI o pasaporte - frente *</label>
+        <label for="frontDni" class="form-label">DNI - Parte frontal</label>
         <input class="form-control" type="file" name="frontDni" id="frontDni" />
       </div>
 
       <div class="mb-3">
-        <label for="backDni" class="form-label">DNI o pasaporte - reverso *</label>
+        <label for="backDni" class="form-label">DNI - Parte posterior</label>
         <input class="form-control" type="file" name="backDni" id="backDni" />
       </div>
 
       <div class="mb-3">
-        <label for="addressProof" class="form-label">Comprobante de domicilio *</label>
+        <label for="addressProof" class="form-label">Direccion de Domicilio</label>
         <input class="form-control" type="file" name="addressProof" id="addressProof" />
       </div>
 
       <div class="mb-3">
-        <label for="bankStatement" class="form-label">Comprobante de estado de
-          cuenta *</label>
+        <label for="bankStatement" class="form-label">Certificado de estado de cuenta </label>
         <input class="form-control" type="file" name="bankStatement" id="bankStatement" />
       </div>
 
       <div class="col-12 d-flex justify-content-center">
-        <button class="btn btn-success" type="submit" id="premiumSubmit">Enviar</button>
+        <button class="btn btn-card" type="submit" id="premiumSubmit">Enviar</button>
       </div>
     </form>
   </div>

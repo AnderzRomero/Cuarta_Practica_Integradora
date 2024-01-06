@@ -1,0 +1,34 @@
+<div>
+    <h1>Compra finalizada</h1>
+    <div style='text-align:center;'>
+        <img src='cid:banner' />
+    </div>
+    <h1>Detalles de la Compra</h1>
+    <p>Hola {{name}}!</p>
+    <p>Gracias por tu compra. Aquí está el detalle:</p>
+    <br />
+    <p> El numero de ticket es: {{ticket}}</p>
+    <p> La fecha de compra: {{date}}</p>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Productos</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <td>{{product.title}}</td>
+                <td>{{quantity}}</td>
+                <td>{{product.price}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <p>Total: {{total}}</p>
+
+    <p>Cordial saludo</p>
+    <p>@HeroSystems</p>
+</div>

@@ -11,13 +11,19 @@ class ViewsRouter extends BaseRouter {
     // EndPoint para ver datos del perfil
     this.get('/profile', ['AUTH'], usersControllers.profile);
     // EndPoint para traer todos los productos
-    this.get('/', ['PUBLIC'], usersControllers.getproducts);
+    this.get('/products', ['PUBLIC'], usersControllers.getproducts);
+    // Endpoint para vista Home
+    this.get('/', ['PUBLIC'], usersControllers.home);
     //Endpoint para el Mocking de productos
     this.get('/mockingproducts', ['PUBLIC'], productsControllers.mockProducts);
     // Endpoint para la validacion de la restauracion de contraseña
     this.get('/password-restore', ['PUBLIC'], usersControllers.passwordRestore);
-    // Vista para crear productos
+    // Endpoint de vista para crear productos
     this.get('/productCreator', ['ADMIN', 'PREMIUM'], usersControllers.productCreator);
+    // Endpoint para obtener documentos para ser premium
+    this.get("/premium", ["USER"], usersControllers.premium);
+    // Endpoint para el formulario de contacto
+    this.get("/contact",['PUBLIC'], usersControllers.contact);
   }
 }
 

@@ -16,5 +16,18 @@ form.addEventListener('submit', async e => {
         headers: {
             'Content-Type': 'application/json'
         }
-    })
+    }).then((res) => res.json())
+        .then((data) => {
+            if (data.status === "success") {
+                Swal.fire({
+                    title: "Se realizo el cambio de contraseña correctamente!",
+                    icon: "success",
+                    position: "top-end",
+                }).then((res) => {
+                    if (res.isConfirmed) {
+                        window.location.href = '/login';
+                    }
+                });
+            }
+        })
 })

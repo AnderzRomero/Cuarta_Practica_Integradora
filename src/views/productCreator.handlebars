@@ -1,24 +1,73 @@
-<h2 class="subtitle">Registro de productos</h2>
+<h1 class="title">Registro de productos</h1>
 
 <form id="formProductCreator" class="formProducts">
-  <label class="label" for="title">Nombre</label>
-  <input class="controls" type="text" name="title" id="title" placeholder="Nombre" required />
-  <label class="label" for="description">Descripción</label>
-  <input class="controls" type="text" name="description" id="description" placeholder="Descripción" required />
-  <label class="label" for="category">Categoría</label>
-  <input class="controls" type="text" name="category" id="category" placeholder="Categoría" required />
-  <label class="label" for="code">Código</label>
-  <input class="controls" type="text" name="code" id="code" placeholder="Código" required />
-  <label class="label" for="stock">Stock</label>
-  <input class="controls" type="number" name="stock" id="stock" placeholder="0" required />
-  <label class="label" for="price">Precio $</label>
-  <input class="controls" type="number" step="0.01" name="price" id="price" placeholder="$ 000.000" required />
-  <label class="label" for="thumbnail">Imagen o Imagenes</label>
-  <input class="controls" type="file" name="thumbnail" id="thumbnail" />
-  <button class="btn btn-add" id="add-btn" type="submit">Registrar</button>
+  <div class="row">
+    <div class="col-4">
+      <input class="controls" type="text" name="title" id="title" placeholder="Nombre" required />
+    </div>
+    <div class="col-8">
+      <input class="controls" type="text" name="description" id="description" placeholder="Descripción" required />
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <select class="form-select" type="text" name="category" id="category" aria-label=".form-select-lg example"
+          required>
+          <option selected>Categoria</option>
+          <option value="Accesorios Externos">Accesorios Externos</option>
+          <option value="Cajas">Cajas</option>
+          <option value="Combos Cajas con Fuentes">Combos Cajas con Fuentes</option>
+          <option value="Combos Perifericos">Combos Perifericos</option>
+          <option value="Diademas">Diademas</option>
+          <option value="Mouse">Mouse</option>
+          <option value="Micro SD">Micro SD</option>
+          <option value="Memorias RAM">Memorias RAM</option>
+          <option value="Fuentes">Fuentes</option>
+          <option value="Monitores">Monitores</option>
+          <option value="Pad Mouse">Pad Mouse</option>
+          <option value="Portatiles Gamer">Portatiles Gamer</option>
+          <option value="Parlantes">Parlantes</option>
+          <option value="Placas Madre">Placas Madre</option>
+          <option value="Redes">Redes</option>
+          <option value="Refigeraciones">Refigeraciones</option>
+          <option value="Reguladores y Ups">Reguladores y Ups</option>
+          <option value="Teclados">Teclados</option>
+          <option value="Tarjetas Graficas">Tarjetas Graficas</option>
+          <option value="Streaming">Streaming</option>
+          <option value="Sillas">Sillas</option>
+          <option value="Unidades Disco Mecanico">Unidades Disco Mecanico</option>
+          <option value="Unidades SSD">Unidades SSD</option>
+        </select>
+      </div>
+      <div class="col-4">
+        <input class="controls" type="text" name="code" id="code" placeholder="Código" required />
+      </div>
+      <div class="col-4">
+        <input class="controls" type="number" name="stock" id="stock" placeholder="Stock = 0" required />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <input class="controls" type="number" step="0.01" name="price" id="price" placeholder=" Precio $ 000.000"
+          required />
+      </div>
+      <div class="col-8">
+        <label class="label" for="thumbnail">Imagenes</label>
+        <input class="controls" type="file" name="thumbnail" id="thumbnail" />
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-card" id="add-btn" type="submit">Registrar</button>
+
+
   <h2 class="subtitle">Eliminar producto</h2>
-  <input class="controls" type="text" name="pid" id="pid" placeholder="ID del producto" />
-  <button class="btn btn-delete" id="delete-btn" type="button">Eliminar/Estado</button>
+  <div class="row">
+    <div class="col-12 controlsDeleteProducto">
+      <input class="controls text-center" type="text" name="pid" id="pid" placeholder="ID del producto" />
+    </div>
+  </div>
+
+  <button class="btn btn-card" id="delete-btn" type="button">Eliminar/Estado</button>
 </form>
 
 <div id="form-messages"></div>

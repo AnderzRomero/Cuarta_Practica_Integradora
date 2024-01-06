@@ -1,4 +1,3 @@
-
 const executePolicies = (policies) => {
     return (req, res, next) => {
         if (policies[0] === "PUBLIC") return next();

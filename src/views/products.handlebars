@@ -1,13 +1,10 @@
-<h1 class="container-fluid">Lista de Productos</h1>
+<h1 class="title">Lista de Productos</h1>
 {{#if user}}
-<h2 class="container-fluid">Bienvenid@ {{user.name}} Tienes el rol de :{{user.role}}</h2>
-<a href="/api/sessions/logout"><button>Cerrar Session</button></a>
-<a href="/api/carts"><button>Ir al carrito</button></a>
+<h2 class="subtitle">Bienvenid@ {{user.name}} Tienes el rol de :{{user.role}}</h2>
+<a href="/api/sessions/logout"><button class="btn btn-logon">Cerrar Session</button></a>
 {{else}}
-<a href="/login"><button>Iniciar Session</button></a>
 {{/if}}
 <br>
-
 <div class="container">
 
     {{#each products}}
@@ -32,13 +29,13 @@
 
 <div class="paginationPanel">
     {{#if hasPrevPage}}
-    <a href="/?page={{prevPage}}"><button class="btn btn-dark">Anterior</button></a>
+    <a href="/products/?page={{prevPage}}"><button class="btn btn-dark">Anterior</button></a>
     {{/if}}
 
     <h5>Pagina: {{page}} de {{totalPages}}</h5>
 
     {{#if hasNextPage}}
-    <a href="/?page={{nextPage}}"><button class="btn btn-dark">Siguiente</button></a>
+    <a href="/products/?page={{nextPage}}"><button class="btn btn-dark">Siguiente</button></a>
     {{/if}}
 </div>
 

@@ -6,6 +6,26 @@ import { getValidFilters } from "../utils.js"
 import config from '../config/config.js';
 import uploader from '../services/uploadService.js';
 
+const home = async (req, res, next) => {
+    try {
+        return res.render("home", {
+            css: 'home'
+        });
+    } catch (error) {
+        req.logger.error(error);
+    }
+}
+
+const contact = async (req, res, next) => {
+    try {
+        return res.render("contact", {
+            css: 'contact'
+        });
+    } catch (error) {
+        req.logger.error(error);
+    }
+}
+
 const getUsers = async (req, res, next) => {
     try {
         const users = await usersService.getUsers();
@@ -102,8 +122,9 @@ const deleteUser = async (req, res, next) => {
 
 const upgradeUser = async (req, res, next) => {
     try {
-        const { uid } = req.user.id;
-        const user = await usersService.getUser({ _id: uid });
+        const { uid } = req.params;
+        const usersInfo = await usersService.getUser({ _id: uid });
+        const user = UserDTO.getTokenDTOFrom(usersInfo);
 
         if (!user) {
             return res.status(404).send({ status: "error", message: "Usuario no encontrado" });
@@ -112,18 +133,16 @@ const upgradeUser = async (req, res, next) => {
             return res.status(400).send({ status: "error", message: "Usuario ya actualizado" });
         }
         if (user.role === "user" && user.isPremium === true) {
-            const updatedUser = await usersService.updateUser(
-                { _id: uid },
-                { role: "premium" }
-            );
-
-            const tokenizedUser = UserDTO.getTokenDTOFrom(updatedUser);
-            const token = jwt.sign(tokenizedUser, config.jwt.SECRET, {
-                expiresIn: "1d",
-            });
+            await usersService.updateUser({ _id: uid }, { role: "premium" });
+            const tokenizedUser = UserDTO.getTokenDTOFromPremium({ ...user, role: "premium" });
+            const token = jwt.sign(tokenizedUser, config.jwt.SECRET, { expiresIn: "1d" });
             res.cookie(config.jwt.COOKIE, token);
-            req.logger.info("Usuario actualizado", uid);
-            return res.status(200).send({ status: "success", message: "Usuario actualizado correctamente" });
+            req.logger.info("Usuario actualizado");
+
+            const usersInfoUpdate = await usersService.getUser({ _id: uid });
+            const infoUpdateUser = UserDTO.getTokenDTOFrom(usersInfoUpdate);
+
+            return res.status(200).send({ status: "success", message: "Usuario actualizado correctamente", payload: infoUpdateUser });
         }
     } catch (error) {
         console.error("Error al actualizar usuario:", error);
@@ -203,7 +222,9 @@ const uploadDocuments = async (req, res, next) => {
 const login = async (req, res, next) => {
     try {
         req.logger.info("Se redirecciona a la vista de login");
-        res.render('login')
+        res.render('login', {
+            css: 'login'
+        })
     } catch (error) {
         req.logger.error("No se logro redireccionar a la vista de login", error)
         const customError = new Error();
@@ -222,7 +243,9 @@ const login = async (req, res, next) => {
 const register = async (req, res, next) => {
     try {
         req.logger.info("Se redirecciona a la vista de registrar");
-        res.render('register')
+        res.render('register', {
+            css: 'register'
+        })
     } catch (error) {
         req.logger.error("No se logro redireccionar a la vista de registrar", error)
         const customError = new Error();
@@ -242,7 +265,9 @@ const register = async (req, res, next) => {
 const profile = async (req, res, next) => {
     try {
         req.logger.info("Se redirecciona a la vista de perfil");
-        res.render('Profile');
+        return res.render('Profile', {
+            css: 'profile'
+        });
     } catch (error) {
         req.logger.error("No se logro redireccionar a la vista de perfil", error)
         const customError = new Error();
@@ -308,7 +333,9 @@ const passwordRestore = async (req, res, next) => {
         //2. ¿El token siquiera es válido?
         try {
             jwt.verify(token, config.jwt.SECRET);
-            res.render('PasswordRestore');
+            res.render('PasswordRestore', {
+                css: 'restore'
+            });
         } catch (error) {
             req.logger.error("Link inválido o corrupto, favor debe solicitar un nuevo correo");
             req.logger.info(Object.keys(error));
@@ -355,7 +382,30 @@ const productCreator = async (req, res, next) => {
     }
 };
 
+const premium = async (req, res, next) => {
+    try {
+        return res.render('premium', {
+            css: 'premium'
+        });
+    } catch (error) {
+        req.logger.error("No se logro redireccionar a la vista de Premium", error)
+        const customError = new Error();
+        const knownError = ErrorsDictionary[error.name];
+
+        if (knownError) {
+            customError.name = knownError,
+                customError.message = error.message,
+                customError.code = errorCodes[knownError];
+            next(customError);
+        } else {
+            next(error);
+        }
+    }
+};
+
 export default {
+    home,
+    contact,
     getUsers,
     getUserBy,
     updateUser,
@@ -367,5 +417,6 @@ export default {
     register,
     profile,
     getproducts,
-    productCreator
+    productCreator,
+    premium
 }

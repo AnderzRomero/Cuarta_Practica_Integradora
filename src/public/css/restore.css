@@ -10,8 +10,8 @@ body {
 .title {
     font-family: "optima", cursive;
     font-size: 2.5rem;
-    margin: 20px;
-    padding-top: 1rem;
+    margin: 10px;
+    padding-top: 0.5rem;
     text-align: center;
 }
 
@@ -20,85 +20,6 @@ body {
     font-size: 1.5rem;
     text-align: center;
     margin-bottom: 2rem;
-}
-
-.formProducts {
-    background-color: #f9f9f9b0;
-    display: grid;
-    width: 75%;
-    margin: 0 auto;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-}
-
-.col-1 {
-    width: 8.33%;
-}
-
-.col-2 {
-    width: 16.66%;
-}
-
-.col-3 {
-    width: 25%;
-}
-
-.col-4 {
-    width: 33.33%;
-}
-
-.col-5 {
-    width: 41.66%;
-}
-
-.col-6 {
-    width: 50%;
-}
-
-.col-7 {
-    width: 58.33%;
-}
-
-.col-8 {
-    width: 66.66%;
-}
-
-.col-9 {
-    width: 75%;
-}
-
-.col-10 {
-    width: 83.33%;
-}
-
-.col-11 {
-    width: 91.66%;
-}
-
-.col-12 {
-    width: 100%;
-}
-
-[class*="col-"] {
-    float: left;
-    padding: 15px;
-}
-
-.form-select {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-}
-
-.row {
-    --bs-gutter-x: 0rem !important;
-}
-
-.controls {
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-    padding: 5px;
 }
 
 .container {
@@ -111,6 +32,28 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
+}
+
+.form {
+    background-color: #f9f9f9b0;
+    max-width: 25%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    border-radius: 5%;
+    align-items: center;
+    margin: 2rem auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Estilos para los campos del formulario */
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    border: 1px solid #797575bd;
+    border-radius: 0.5rem;
 }
 
 .btn-menu {
@@ -128,7 +71,7 @@ body {
 }
 
 .btn-card {
-    width: 20% !important;
+    width: 75% !important;
     --bs-btn-color: #fff;
     --bs-btn-bg: #212529;
     --bs-btn-border-color: #ffffff;
@@ -143,11 +86,5 @@ body {
     --bs-btn-disabled-color: #fff;
     --bs-btn-disabled-bg: #212529;
     --bs-btn-disabled-border-color: #212529;
-    margin: 1rem auto;
-    padding: 8px 0;
-}
-
-.controlsDeleteProducto {
-    width: 40%;
-    margin: 0 auto;
+    margin-top: 2rem;
 }
